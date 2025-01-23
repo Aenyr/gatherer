@@ -1,5 +1,5 @@
 import React from "react";
-import Herbs from "./ui/Herbs";
+import Herbs from "../components/Locations";
 
 export default function herbs() {
   return (
