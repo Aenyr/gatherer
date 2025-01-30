@@ -1,68 +1,78 @@
 "use client";
 import { useState } from "react";
+import Cursor from ".//Cursor";
 
 export default function Herbs() {
   const [selectedOption, setSelectedOption] = useState();
-const [selectedHerb, setSelectedHerb] = useState()
+  const [selectedHerb, setSelectedHerb] = useState();
 
   const handleClick = (option) => {
     setSelectedOption(option);
   };
 
   const handleHerbSelect = (herb) => {
-    setSelectedHerb(herb); 
+    setSelectedHerb(herb);
   };
 
   const options = [
     {
       name: "Old Azeroth",
       color: "bg-[#195E64]",
-      plants: ["Peacebloom", "Silverleaf", "Briarthron"]
+      plants: ["Peacebloom", "Silverleaf", "Briarthron"],
+      ores: ["Copper ore", "Silver ore", "Gold ore"],
     },
     {
       name: "Outland",
       color: "bg-[#6FA243]",
-      plants: ["Netherbloom", "Felweed", "Terrocone"]
+      plants: ["Netherbloom", "Felweed", "Terrocone"],
+      ores: ["Fel Iron ore", "Khorium ore"],
     },
     {
       name: "Northrend",
       color: "bg-[#35AEE9]",
-      plants: ["Icethron", "Goldclover", "Tiger Lilly"]
+      plants: ["Icethron", "Goldclover", "Tiger Lilly"],
+      ores: ["Titanium ore", "Cobalt ore", "Saronite ore"],
     },
     {
       name: "Pandaria",
       color: "bg-[#88AC8A]",
-      plants: ["Rain Poppy", "Bristlethron", "Emperors Crown"]
+      plants: ["Rain Poppy", "Bristlethron", "Emperors Crown"],
+      ores: ["Ghost Iron ore"],
     },
     {
       name: "Shadowlands",
       color: "bg-[#6B6B6B]",
-      plants: ["Marrowroot", "Widowbloom", "Rising Glory"]
+      plants: ["Marrowroot", "Widowbloom", "Rising Glory"],
+      ores: ["Bismuth ore", "Monolith ore"],
     },
   ];
 
   return (
-    <div className="flex flex-col items-center flex-wrap w-[100vw]">
-      <h1 className="text-white text-[40px] mb-[50px]">
-        Where did you find this herb?
-      </h1>
-      <div className="flex flex-wrap justify-around w-[100%] ">
-        {options.map((place, index) => (
-          <div className="" key={index}>
-            <div
-              onClick={() => {
-                handleClick(place);
-              }}
-              className={`w-[200px] h-[200px] rounded-[20px] flex justify-center items-center transition-all duration-300 ease-in-out hover:scale-110 text-white border-4 border-white-300 ${place.color} ${place.name === selectedOption?.name && "scale-110"} `}
-            >
-              {place.name}
+    <>
+      <Cursor />
+      <div className="flex flex-col items-center flex-wrap w-[100vw]">
+        <h1 className="text-white text-[40px] mb-[50px]">
+          Where did you find this herb?
+        </h1>
+        <div className="flex flex-wrap justify-around w-[100%] ">
+          {options.map((place, index) => (
+            <div className="" key={index}>
+              <div
+                onClick={() => {
+                  handleClick(place);
+                }}
+                className={`w-[200px] h-[200px] rounded-[20px] flex justify-center items-center transition-all duration-300 ease-in-out hover:scale-110 text-white border-4 border-white-300 ${
+                  place.color
+                } ${place.name === selectedOption?.name && "scale-110"} `}
+              >
+                {place.name}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-      <h1 className="text-white text-[40px] mb-[50px]">What did you find?</h1>
-      {selectedOption && (
-      <div className="flex flex-col gap-4">
+          ))}
+        </div>
+        <h1 className="text-white text-[40px] mb-[50px]">What did you find?</h1>
+        {selectedOption && (
+          <div className="flex flex-col gap-4">
             {selectedOption.plants.map((herb, index) => (
               <div key={index} className="flex items-center gap-3">
                 <input
@@ -82,7 +92,9 @@ const [selectedHerb, setSelectedHerb] = useState()
                 </label>
               </div>
             ))}
-          </div>)}
-    </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
