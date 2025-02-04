@@ -1,10 +1,10 @@
 import React from "react";
-import Ores from "./ui/Ores";
+import Locations from "../components/Locations";
 
-export default function ores() {
+export default function Ores() {
   return (
-    <div>
-      <Ores />
+    <div className="mt-[-100px] flex min-h-[100vh] bg-[#210B3C] pt-[200px]">
+      <Locations type="ore" />
     </div>
   );
 }
